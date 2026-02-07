@@ -74,7 +74,7 @@ const Home = ({ onCartClick, onLoginClick }) => {
 
   const offers = [
     { title: 'Up to 50% OFF', subtitle: 'On Fresh Vegetables', bg: 'bg-gradient-to-r from-green-500 to-emerald-600' },
-    { title: 'Buy 1 Get 1 FREE', subtitle: 'On Selected Items', bg: 'bg-gradient-to-r from-orange-500 to-red-600' },
+    { title: 'Buy 1 Get 1 FREE', subtitle: 'On Selected Items', bg: 'bg-gradient-to-r from-purple-500 to-pink-600' },
     { title: 'Flat ₹100 OFF', subtitle: 'On Orders Above ₹999', bg: 'bg-gradient-to-r from-blue-500 to-indigo-600' },
   ];
 
@@ -83,11 +83,11 @@ const Home = ({ onCartClick, onLoginClick }) => {
       {/* NAVBAR - Will be added separately */}
 
       {/* HERO BANNER SECTION */}
-      <section className="bg-gradient-to-br from-orange-600 via-orange-500 to-red-500 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-purple-600 via-purple-500 to-indigo-500 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 right-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 left-20 w-96 h-96 bg-yellow-300 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 left-20 w-96 h-96 bg-pink-300 rounded-full blur-3xl"></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
@@ -98,7 +98,7 @@ const Home = ({ onCartClick, onLoginClick }) => {
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
                 Your Trusted
-                <span className="block text-yellow-300">Local Store Online</span>
+                <span className="block text-pink-300">Local Store Online</span>
               </h1>
               <p className="text-lg md:text-xl text-white/90 mb-6 max-w-lg">
                 Fresh groceries, vegetables, fashion & more delivered to your doorstep in 1-2 hours
@@ -106,7 +106,7 @@ const Home = ({ onCartClick, onLoginClick }) => {
               
               {/* Feature badges */}
               <div className="flex flex-wrap gap-3">
-                <div className="bg-white text-orange-600 px-5 py-2.5 rounded-lg font-semibold text-sm shadow-lg flex items-center gap-2">
+                <div className="bg-white text-purple-600 px-5 py-2.5 rounded-lg font-semibold text-sm shadow-lg flex items-center gap-2">
                   <span className="text-lg">⚡</span>
                   Fast Delivery
                 </div>
@@ -157,7 +157,7 @@ const Home = ({ onCartClick, onLoginClick }) => {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
               Shop by Category
             </h2>
-            <button className="text-orange-600 font-semibold hover:text-orange-700 transition-colors text-sm md:text-base">
+            <button className="text-purple-600 font-semibold hover:text-purple-700 transition-colors text-sm md:text-base">
               View All →
             </button>
           </div>
@@ -190,14 +190,14 @@ const Home = ({ onCartClick, onLoginClick }) => {
               </h2>
               <p className="text-gray-600 text-sm">Trending items in your area</p>
             </div>
-            <button className="hidden md:block text-orange-600 font-semibold hover:text-orange-700 transition-colors">
+            <button className="hidden md:block text-purple-600 font-semibold hover:text-purple-700 transition-colors">
               View All Products →
             </button>
           </div>
 
           {loading ? (
             <div className="text-center py-20">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-orange-600"></div>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-purple-600"></div>
               <p className="mt-4 text-gray-500 font-medium">Loading products...</p>
             </div>
           ) : products.length === 0 ? (

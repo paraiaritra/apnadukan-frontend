@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const apiFetch = async (url, options = {}) => {
   const res = await fetch(`${API_URL}${url}`, {
@@ -6,6 +6,7 @@ export const apiFetch = async (url, options = {}) => {
       'Content-Type': 'application/json',
       ...options.headers,
     },
+    credentials: 'include',   // ⭐ VERY IMPORTANT (cookies/auth)
     ...options,
   });
 
