@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext } from "react";
+import { API_URL } from "../config"; // ✅ IMPORTANT
 
 const AuthContext = createContext();
 
@@ -7,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem('apnaUser');
+    const savedUser = localStorage.getItem("apnaUser");
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
@@ -17,9 +18,9 @@ export const AuthProvider = ({ children }) => {
   // ✅ LOGIN
   const login = async (mobile, password) => {
     try {
-      const response = await fetch('http://localhost:5000/api/users/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch(`${API_URL}/api/users/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ mobile, password }),
       });
 
@@ -27,22 +28,22 @@ export const AuthProvider = ({ children }) => {
 
       if (response.ok) {
         setUser(data);
-        localStorage.setItem('apnaUser', JSON.stringify(data));
+        localStorage.setItem("apnaUser", JSON.stringify(data));
         return { success: true };
       } else {
         return { success: false, message: data.message };
       }
     } catch (error) {
-      return { success: false, message: 'Server error' };
+      return { success: false, message: "Server error" };
     }
   };
 
-  // ✅ REGISTER (FIXED)
+  // ✅ REGISTER
   const register = async (name, mobile, password) => {
     try {
-      const response = await fetch('http://localhost:5000/api/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch(`${API_URL}/api/users`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, mobile, password }),
       });
 
@@ -50,19 +51,19 @@ export const AuthProvider = ({ children }) => {
 
       if (response.ok) {
         setUser(data);
-        localStorage.setItem('apnaUser', JSON.stringify(data));
+        localStorage.setItem("apnaUser", JSON.stringify(data));
         return { success: true };
       } else {
         return { success: false, message: data.message };
       }
     } catch (error) {
-      return { success: false, message: 'Server error' };
+      return { success: false, message: "Server error" };
     }
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('apnaUser');
+    localStorage.removeItem("apnaUser");
   };
 
   return (
