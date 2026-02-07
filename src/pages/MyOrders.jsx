@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
+import { API_URL } from "../config";
 import { Package, MapPin, Phone, User, Calendar, Truck, CheckCircle, Clock } from "lucide-react";
 
 const MyOrders = () => {
@@ -12,14 +13,11 @@ const MyOrders = () => {
 
     const fetchOrders = async () => {
       try {
-        const res = await fetch(
-          "http://localhost:5000/api/orders/myorders",
-          {
-            headers: {
-              Authorization: `Bearer ${user.token}`,
-            },
-          }
-        );
+        const res = await fetch(`${API_URL}/api/orders/myorders`, {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
         const data = await res.json();
         setOrders(data);
       } catch {

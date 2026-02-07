@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
+import { API_URL } from "../config";
 import { 
   Package, ShoppingCart, Users, TrendingUp, Plus, Trash2, 
   Truck, CheckCircle, MapPin, Phone, User, Calendar, 
@@ -29,8 +30,8 @@ const Admin = () => {
 
     const fetchAll = async () => {
       try {
-        const pRes = await fetch("http://localhost:5000/api/products");
-        const oRes = await fetch("http://localhost:5000/api/orders", {
+        const pRes = await fetch(`${API_URL}/api/products`);
+        const oRes = await fetch(`${API_URL}/api/orders`, {
           headers: { Authorization: `Bearer ${user.token}` },
         });
 
@@ -51,7 +52,7 @@ const Admin = () => {
   const addProduct = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/api/products", {
+    const res = await fetch(`${API_URL}/api/products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,13 +80,10 @@ const Admin = () => {
   const deleteProduct = async (id) => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
 
-    const res = await fetch(
-      `http://localhost:5000/api/products/${id}`,
-      {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${user.token}` },
-      }
-    );
+    const res = await fetch(`${API_URL}/api/products/${id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${user.token}` },
+    });
 
     if (res.ok) {
       setProducts((prev) => prev.filter((p) => p._id !== id));
@@ -98,13 +96,12 @@ const Admin = () => {
   /* ================= ORDERS ================= */
 
   const dispatchOrder = async (id) => {
-    const res = await fetch(
-      `http://localhost:5000/api/orders/${id}/dispatch`,
-      {
-        method: "PUT",
-        headers: { Authorization: `Bearer ${user.token}` },
-      }
-    );
+    const res = await fetch(`${API_URL}/api/orders/${id}/dispatch`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
 
     if (res.ok) {
       setOrders((prev) =>
@@ -119,13 +116,12 @@ const Admin = () => {
   };
 
   const deliverOrder = async (id) => {
-    const res = await fetch(
-      `http://localhost:5000/api/orders/${id}/deliver`,
-      {
-        method: "PUT",
-        headers: { Authorization: `Bearer ${user.token}` },
-      }
-    );
+    const res = await fetch(`${API_URL}/api/orders/${id}/deliver`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
 
     if (res.ok) {
       setOrders((prev) =>

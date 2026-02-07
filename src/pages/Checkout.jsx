@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useCart } from "../context/CartContext.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 import { MapPin, Phone, Home, ShoppingBag, CreditCard, CheckCircle, AlertCircle } from "lucide-react";
 
 const Checkout = () => {
@@ -49,7 +50,7 @@ const Checkout = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/orders", {
+      const res = await fetch(`${API_URL}/api/orders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
